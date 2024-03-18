@@ -24,7 +24,7 @@ function getById(id) {
 
 function remove(id) {
   const bugIdx = bugs.findIndex(bug => bug._id === id)
-  cars.splice(bugIdx, 1)
+  bugs.splice(bugIdx, 1)
 
   return _saveCarsToFile()
 }
