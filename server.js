@@ -30,6 +30,8 @@ app.get('/api/bug/save', (req, res) => {
     description: query.desc,
   }
 
+  if (query._id) bugToSave._id = query._id
+
   bugService
     .save(bugToSave)
     .then(bug => res.send(bug))
