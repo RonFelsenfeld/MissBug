@@ -34,8 +34,15 @@ app.get('/api/bug/save', (req, res) => {
     })
 })
 
-app.get('/api/bug/:bugId', (req, res) => {
-  res.send('/api/bug/bugId!')
+app.get('/api/bug/:id', (req, res) => {
+  const bugId = req.params.id
+  bugService
+    .getById(bugId)
+    .then(bug => res.send(bug))
+    .catch(err => {
+      loggerService.error('Cannot get bug:', err)
+      res.status(400).send('Cannot get bug')
+    })
 })
 
 app.get('/api/bug/:bugId/remove', (req, res) => {
