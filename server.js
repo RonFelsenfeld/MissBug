@@ -18,7 +18,20 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug/save', (req, res) => {
-  res.send('/api/bug/save!')
+  const { query } = req
+
+  const bugToSave = {
+    title: query.title,
+    severity: query.severity,
+  }
+
+  bugService
+    .save(bugToSave)
+    .then(bug => res.send(bug))
+    .catch(err => {
+      loggerService.error('Cannot save bug:', err)
+      res.status(400).send('Cannot save bug')
+    })
 })
 
 app.get('/api/bug/:bugId', (req, res) => {

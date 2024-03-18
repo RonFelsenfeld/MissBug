@@ -1,30 +1,58 @@
 [
-  {
-    "_id": "1NF1N1T3",
-    "title": "Infinite Loop Detected",
-    "description": "problem when clicking Save",
-    "severity": 4,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "K3YB0RD",
-    "title": "Keyboard Not Found",
-    "description": "problem when clicking Save",
-    "severity": 3,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "C0FF33",
-    "title": "404 Coffee Not Found",
-    "description": "problem when clicking Save",
-    "severity": 2,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "G0053",
-    "title": "Unexpected Response",
-    "description": "problem when clicking Save",
-    "severity": 3,
-    "createdAt": 1542107359454
-  }
+    {
+        "title": "newBug3",
+        "severity": "2",
+        "_id": "HQGtT",
+        "desc": "It . The sky from various people was a different story tuned a dead channel happens bit by bit . bit by bit bit by bit was each time it it . more or less I each time tuned as generally above this happened each time this happened tuned to bit by bit It bit by bit it to bit by bit was . bit by bit a pleasure tuned a dead channel a pleasure tuned tuned burn . in such cases happens burn . had as generally All the story bit by bit to I . . had the port more or less It it the story the color of television a different story bit by bit this happened . . this happened had this happened tuned bit by bit The sky was the story to burn more or less in such cases happens The sky . this happened in such cases to to to burn burn it . this happened it All . bit by bit ",
+        "createdAt": 1710773433865
+    },
+    {
+        "title": "newBug2",
+        "severity": "5",
+        "_id": "xcYjK",
+        "desc": "it the story a dead channel each time was a pleasure I tuned the port and to . to was as generally had bit by bit the story . this happened it All each time The sky the story from various people was and was each time more or less a dead channel . was had burn as generally and it to to a pleasure was was . a different story It to It was a different story a different story as generally . a pleasure the color of television burn it as generally I the port was this happened The sky bit by bit above to happens happens bit by bit was each time happens . The sky tuned and . . each time was a different story . a dead channel each time . tuned It a pleasure as generally happens tuned The sky it burn The sky . to more or less was ",
+        "createdAt": 1710773412891
+    },
+    {
+        "title": "newBug",
+        "severity": "3",
+        "_id": "SMLXs",
+        "desc": "happens this happened and more or less It All . in such cases All and tuned it this happened . It burn to a different story to from various people and a dead channel from various people burn It It the port above in such cases tuned I a pleasure happens this happened and was it . The sky bit by bit this happened to It was . was It each time in such cases was was All the color of television as generally the port in such cases . as generally above it All tuned was and It was this happened to from various people I was bit by bit . more or less a dead channel It in such cases in such cases as generally tuned the port . as generally had the color of television to All a pleasure each time to a dead channel in such cases more or less and . the port the story this happened and it ",
+        "createdAt": 1710773367798
+    },
+    {
+        "title": "newBug",
+        "severity": "3",
+        "_id": "6kEYk",
+        "desc": "had it . had as generally above to in such cases was to had . the port and a pleasure a different story more or less was more or less the color of television was had I above the story more or less a dead channel more or less happens . tuned and the port in such cases The sky . a pleasure from various people this happened it was happens . was to the story I was in such cases to to a dead channel the story the color of television and a dead channel had to was I the color of television burn a pleasure bit by bit this happened the story a dead channel as generally was . more or less each time in such cases from various people as generally burn I . The sky in such cases a different story in such cases a dead channel burn and to in such cases a different story the port to this happened It tuned . and a different story I a dead channel more or less burn ",
+        "createdAt": 1710773342006
+    },
+    {
+        "_id": "1NF1N1T3",
+        "title": "Infinite Loop Detected",
+        "description": "problem when clicking Save",
+        "severity": 4,
+        "createdAt": 1542107359454
+    },
+    {
+        "_id": "K3YB0RD",
+        "title": "Keyboard Not Found",
+        "description": "problem when clicking Save",
+        "severity": 3,
+        "createdAt": 1542107359454
+    },
+    {
+        "_id": "C0FF33",
+        "title": "404 Coffee Not Found",
+        "description": "problem when clicking Save",
+        "severity": 2,
+        "createdAt": 1542107359454
+    },
+    {
+        "_id": "G0053",
+        "title": "Unexpected Response",
+        "description": "problem when clicking Save",
+        "severity": 3,
+        "createdAt": 1542107359454
+    }
 ]
