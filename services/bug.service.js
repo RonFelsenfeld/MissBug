@@ -2,7 +2,7 @@ import fs from 'fs'
 
 import { utilService } from './utils.service.js'
 
-export const carService = {
+export const bugService = {
   query,
   getById,
   remove,
