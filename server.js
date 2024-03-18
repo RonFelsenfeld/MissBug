@@ -24,6 +24,7 @@ app.get('/api/bug/save', (req, res) => {
   const bugToSave = {
     title: query.title,
     severity: query.severity,
+    description: query.desc,
   }
 
   bugService
