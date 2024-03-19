@@ -7,11 +7,11 @@ export function BugPreview({ bug }) {
         Severity: <span>{bug.severity}</span>
       </p>
 
-      {/* <ul>
+      <ul>
         {bug.labels.map(label => (
           <li key={label}>{label}</li>
         ))}
-      </ul> */}
+      </ul>
     </article>
   )
 }

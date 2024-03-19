@@ -25,6 +25,15 @@ function query(filterBy, sortBy) {
     )
   }
 
+  if (filterBy.label) {
+    bugsToReturn = bugsToReturn.filter(bug => {
+      for (let i = 0; i < bug.labels.length; i++) {
+        const currLabel = bug.labels[i]
+        if (currLabel.includes(filterBy.label)) return bug
+      }
+    })
+  }
+
   const sortByKey = Object.keys(sortBy)[0]
   if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)
 

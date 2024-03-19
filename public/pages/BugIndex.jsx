@@ -50,8 +50,14 @@ export function BugIndex() {
       title: prompt('Bug title?'),
       severity: +prompt('Bug severity?'),
       description: prompt('Bug description?'),
+      labels: [],
     }
-    console.log('bug', bug)
+
+    let newLabel = prompt('Bug label? (999 to exit)')
+    while (newLabel !== '999') {
+      bug.labels.push(newLabel)
+      newLabel = prompt('Bug label? (999 to exit)')
+    }
 
     bugService
       .save(bug)

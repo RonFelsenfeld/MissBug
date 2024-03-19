@@ -37,6 +37,16 @@ export function BugFilter({ onSetFilter, filterBy }) {
           onChange={handleChange}
           placeholder="By min severity"
         />
+
+        <label htmlFor="labels">Label</label>
+        <input
+          type="text"
+          id="label"
+          name="label"
+          value={filterByToEdit.label}
+          onChange={handleChange}
+          placeholder="By Label"
+        />
       </form>
     </section>
   )

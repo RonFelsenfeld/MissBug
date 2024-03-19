@@ -21,6 +21,7 @@ app.get('/api/bug', (req, res) => {
   const filterBy = {
     title: receivedFilter.title || '',
     minSeverity: +receivedFilter.minSeverity || 0,
+    label: receivedFilter.label || '',
   }
 
   bugService
