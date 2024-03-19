@@ -1,6 +1,7 @@
 import fs from 'fs'
 
 import { utilService } from './utils.service.js'
+const PAGE_SIZE = 3
 
 export const bugService = {
   query,
@@ -33,6 +34,10 @@ function query(filterBy, sortBy) {
       }
     })
   }
+
+  const pageIdx = +filterBy.pageIdx
+  const startIdx = pageIdx * PAGE_SIZE
+  bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
 
   const sortByKey = Object.keys(sortBy)[0]
   if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)

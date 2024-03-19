@@ -30,6 +30,12 @@ export function BugIndex() {
     setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
   }
 
+  function onChangePage(diff) {
+    let nextPageIdx = filterBy.pageIdx + diff
+    if (nextPageIdx < 0) nextPageIdx = 0
+    setFilterBy(prevFilter => ({ ...prevFilter, pageIdx: nextPageIdx }))
+  }
+
   function onRemoveBug(bugId) {
     bugService
       .remove(bugId)
@@ -100,6 +106,10 @@ export function BugIndex() {
         <BugSort setSortBy={setSortBy} sortBy={sortBy} />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
+
+      <button onClick={() => onChangePage(-1)}>-</button>
+      <span>{filterBy.pageIdx + 1}</span>
+      <button onClick={() => onChangePage(1)}>+</button>
     </main>
   )
 }
