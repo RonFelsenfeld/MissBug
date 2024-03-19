@@ -11,7 +11,7 @@ export const bugService = {
 
 const bugs = utilService.readJsonFile('data/bugs.json')
 
-function query(filterBy) {
+function query(filterBy, sortBy) {
   let bugsToReturn = bugs.slice()
 
   if (filterBy.title) {
@@ -24,6 +24,9 @@ function query(filterBy) {
       bug => bug.severity >= filterBy.minSeverity
     )
   }
+
+  const sortByKey = Object.keys(sortBy)[0]
+  if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)
 
   return Promise.resolve(bugsToReturn)
 }
@@ -67,4 +70,22 @@ function _saveCarsToFile() {
       resolve()
     })
   })
+}
+
+////////////////////////////////////////////////////
+
+function _sortBugs(bugs, sortBy) {
+  if (sortBy.title) {
+    bugs.sort((b1, b2) => b1.title.localeCompare(b2.title) * sortBy.title)
+  }
+
+  if (sortBy.severity) {
+    bugs.sort((b1, b2) => (b1.severity - b2.severity) * sortBy.severity)
+  }
+
+  if (sortBy.createdAt) {
+    bugs.sort((b1, b2) => (b1.createdAt - b2.createdAt) * sortBy.createdAt)
+  }
+
+  return bugs
 }

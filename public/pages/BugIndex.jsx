@@ -3,6 +3,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import { BugList } from '../cmps/BugList.jsx'
 import { BugFilter } from '../cmps/BugFilter.jsx'
+import { BugSort } from '../cmps/BugSort.jsx'
 
 const { useState, useEffect } = React
 const { useSearchParams } = ReactRouterDOM
@@ -11,6 +12,7 @@ export function BugIndex() {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [bugs, setBugs] = useState(null)
+  const [sortBy, setSortBy] = useState({})
   const [filterBy, setFilterBy] = useState(
     bugService.getFilterFromParams(searchParams)
   )
@@ -18,10 +20,10 @@ export function BugIndex() {
   useEffect(() => {
     loadBugs()
     setSearchParams(filterBy)
-  }, [filterBy])
+  }, [filterBy, sortBy])
 
   function loadBugs() {
-    bugService.query(filterBy).then(setBugs)
+    bugService.query(filterBy, sortBy).then(setBugs)
   }
 
   function onSetFilter(fieldsToUpdate) {
@@ -89,6 +91,7 @@ export function BugIndex() {
       <main>
         <button onClick={onAddBug}>Add Bug ⛐</button>
         <BugFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+        <BugSort setSortBy={setSortBy} sortBy={sortBy} />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
     </main>
