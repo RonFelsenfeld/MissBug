@@ -33,7 +33,7 @@ export function BugFilter({ onSetFilter, filterBy }) {
           type="number"
           id="minSeverity"
           name="minSeverity"
-          value={filterByToEdit.minSeverity || ''}
+          value={!!filterByToEdit.minSeverity || ''}
           onChange={handleChange}
           placeholder="By min severity"
         />
