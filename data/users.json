@@ -16,5 +16,11 @@
     "username": "popo",
     "fullname": "Popo Pa",
     "password": "popo1"
+  },
+  {
+    "username": "lolo",
+    "password": "lolo1",
+    "fullname": "lolo la",
+    "_id": "NvwWu"
   }
 ]

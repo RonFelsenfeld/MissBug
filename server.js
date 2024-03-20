@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser'
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 import { userService } from './services/user.service.js'
+import { CLIENT_RENEG_LIMIT } from 'tls'
+import { Certificate } from 'crypto'
 
 const app = express()
 
@@ -57,11 +59,13 @@ app.get('/api/bug/:id', (req, res) => {
 
 // Create new bug
 app.post('/api/bug', (req, res) => {
+  const loggedInUser = userService.validateToken(req.cookies.loginToken)
+  if (!loggedInUser) return res.status(401).send('Cannot add bug')
+
   const bugToSave = req.body
-  console.log(`bugToSave`, bugToSave)
 
   bugService
-    .save(bugToSave)
+    .save(bugToSave, loggedInUser)
     .then(bug => res.send(bug))
     .catch(err => {
       loggerService.error('Cannot save bug:', err)
@@ -71,6 +75,9 @@ app.post('/api/bug', (req, res) => {
 
 // Update existing bug
 app.put('/api/bug', (req, res) => {
+  const loggedInUser = userService.validateToken(req.cookies.loginToken)
+  if (!loggedInUser) return res.status(401).send('Cannot update bug')
+
   const bugToSave = {
     _id: req.body._id,
     title: req.body.title,
@@ -78,10 +85,9 @@ app.put('/api/bug', (req, res) => {
     description: req.body.description,
     createdAt: +req.body.createdAt,
   }
-  console.log(`bugToSave`, bugToSave)
 
   bugService
-    .save(bugToSave)
+    .save(bugToSave, loggedInUser)
     .then(bug => res.send(bug))
     .catch(err => {
       loggerService.error('Cannot save bug:', err)
@@ -91,10 +97,14 @@ app.put('/api/bug', (req, res) => {
 
 // Remove bug
 app.delete('/api/bug/:id', (req, res) => {
+  console.log(req.cookies.loginToken)
+  const loggedInUser = userService.validateToken(req.cookies.loginToken)
+  if (!loggedInUser) return res.status(401).send('Cannot remove bug')
+
   const bugId = req.params.id
 
   bugService
-    .remove(bugId)
+    .remove(bugId, loggedInUser)
     .then(() => res.send(bugId))
     .catch(err => {
       loggerService.error('Cannot remove bug:', err)
