@@ -133,6 +133,19 @@ app.get('/api/user', (req, res) => {
 app.delete('/api/user/:id', (req, res) => {
   const userId = req.params.id
 
+  // ! Bonus - almost worked
+  // bugService
+  //   .query({ creatorId: userId })
+  //   .then(userBugs => {
+  //     console.log(`userBugs`, userBugs)
+  //     if (userBugs.length)
+  //       return res.status(400).send('Cannot remove user because he have bugs')
+  //   })
+  //   .catch(err => {
+  //     console.log('Cannot load user bugs', err)
+  //     res.status(400).send('Cannot load user bugs')
+  //   })
+
   userService
     .remove(userId)
     .then(() => res.send(userId))

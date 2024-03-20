@@ -33,17 +33,22 @@ export function UserIndex() {
   return (
     <section>
       <ul>
-        {users.map(user => (
-          <li key={user._id}>
-            <p>
-              Name: <span>{user.fullname}</span>
-            </p>
-            <p>
-              ID: <span>{user._id}</span>
-            </p>
-            <button onClick={() => onRemoveUser(user._id)}>Remove User</button>
-          </li>
-        ))}
+        {users.map(user => {
+          if (user.isAdmin) return
+          return (
+            <li key={user._id}>
+              <p>
+                Name: <span>{user.fullname}</span>
+              </p>
+              <p>
+                ID: <span>{user._id}</span>
+              </p>
+              <button onClick={() => onRemoveUser(user._id)}>
+                Remove User
+              </button>
+            </li>
+          )
+        })}
       </ul>
     </section>
   )

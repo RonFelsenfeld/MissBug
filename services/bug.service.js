@@ -12,7 +12,7 @@ export const bugService = {
 
 const bugs = utilService.readJsonFile('data/bugs.json')
 
-function query(filterBy, sortBy) {
+function query(filterBy = {}, sortBy = {}) {
   let bugsToReturn = bugs.slice()
 
   if (filterBy.title) {
@@ -36,18 +36,20 @@ function query(filterBy, sortBy) {
   }
 
   if (filterBy.creatorId) {
-    bugsToReturn = bugsToReturn.filter(
-      bug => bug.creator._id === filterBy.creatorId
-    )
-    console.log(bugsToReturn)
+    bugsToReturn = bugsToReturn.filter(bug => {
+      console.log(bug.creator._id)
+      return bug.creator._id === filterBy.creatorId
+    })
   }
 
   const sortByKey = Object.keys(sortBy)[0]
   if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)
 
-  const pageIdx = +filterBy.pageIdx
-  const startIdx = pageIdx * PAGE_SIZE
-  bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
+  if (filterBy.pageIdx !== undefined) {
+    const pageIdx = +filterBy.pageIdx
+    const startIdx = pageIdx * PAGE_SIZE
+    bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
+  }
 
   return Promise.resolve(bugsToReturn)
 }
