@@ -144,7 +144,8 @@ app.post('/api/auth/login', (req, res) => {
 
 // Logout
 app.post('/api/auth/logout', (req, res) => {
-  res.send('logout')
+  res.clearCookie('loginToken')
+  res.send('logged-out!')
 })
 
 // Fallback route
