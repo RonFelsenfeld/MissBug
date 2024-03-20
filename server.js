@@ -12,7 +12,6 @@ app.use(cookieParser())
 app.use(express.json())
 
 // Read bugs
-
 app.get('/api/bug', (req, res) => {
   const { query } = req
 
@@ -36,7 +35,6 @@ app.get('/api/bug', (req, res) => {
 })
 
 // Read bug
-
 app.get('/api/bug/:id', (req, res) => {
   const bugId = req.params.id
   const visitedBugsIds = req.cookies.visitedBugsIds || []
@@ -57,7 +55,6 @@ app.get('/api/bug/:id', (req, res) => {
 })
 
 // Create new bug
-
 app.post('/api/bug', (req, res) => {
   const bugToSave = req.body
   console.log(`bugToSave`, bugToSave)
@@ -72,7 +69,6 @@ app.post('/api/bug', (req, res) => {
 })
 
 // Update existing bug
-
 app.put('/api/bug', (req, res) => {
   const bugToSave = {
     _id: req.body._id,
@@ -93,7 +89,6 @@ app.put('/api/bug', (req, res) => {
 })
 
 // Remove bug
-
 app.delete('/api/bug/:id', (req, res) => {
   const bugId = req.params.id
 
@@ -106,8 +101,24 @@ app.delete('/api/bug/:id', (req, res) => {
     })
 })
 
-// Fallback route
+// Authentication & Authorization API
 
+// Signup
+app.post('/api/auth/signup', (req, res) => {
+  res.send('signup')
+})
+
+// Login
+app.post('/api/auth/login', (req, res) => {
+  res.send('login')
+})
+
+// Logout
+app.post('/api/auth/logout', (req, res) => {
+  res.send('logout')
+})
+
+// Fallback route
 app.get('/**', (req, res) => {
   res.sendFile(path.resolve('public/index.html'))
 })
