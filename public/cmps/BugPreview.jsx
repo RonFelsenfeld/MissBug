@@ -8,8 +8,8 @@ export function BugPreview({ bug }) {
       </p>
 
       <ul>
-        {bug.labels.map(label => (
-          <li key={label}>{label}</li>
+        {bug.labels.map((label, idx) => (
+          <li key={`${label}${idx}`}>{label}</li>
         ))}
       </ul>
     </article>

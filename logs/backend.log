@@ -35,3 +35,5 @@
 20.3.2024, 15:25:41 - ERROR - Could not signup | TypeError: userService.getLoginToke is not a function
 20.3.2024, 15:36:54 - WARN - Invalid Credentials | TypeError: user.getLoginToken is not a function
 20.3.2024, 15:37:30 - WARN - Invalid Credentials | TypeError: user.getLoginToken is not a function
+20.3.2024, 16:32:15 - ERROR - Cannot remove bug: | Not your bug
+20.3.2024, 16:38:36 - WARN - Invalid Credentials | Error: value must not be null or undefined

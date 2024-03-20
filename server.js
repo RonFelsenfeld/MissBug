@@ -84,6 +84,8 @@ app.put('/api/bug', (req, res) => {
     severity: +req.body.severity,
     description: req.body.description,
     createdAt: +req.body.createdAt,
+    labels: req.body.labels,
+    creator: req.body.creator,
   }
 
   bugService
@@ -97,7 +99,6 @@ app.put('/api/bug', (req, res) => {
 
 // Remove bug
 app.delete('/api/bug/:id', (req, res) => {
-  console.log(req.cookies.loginToken)
   const loggedInUser = userService.validateToken(req.cookies.loginToken)
   if (!loggedInUser) return res.status(401).send('Cannot remove bug')
 

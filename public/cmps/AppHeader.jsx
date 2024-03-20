@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouter
-const { NavLink } = ReactRouterDOM
+const { NavLink, Link } = ReactRouterDOM
 
 import { userService } from '../services/user.service.js'
 
@@ -34,6 +34,7 @@ export function AppHeader() {
   return (
     <header>
       <UserMsg />
+
       <nav>
         <NavLink to="/">Home</NavLink> |<NavLink to="/bug">Bugs</NavLink> |
         <NavLink to="/about">About</NavLink>
@@ -42,8 +43,10 @@ export function AppHeader() {
 
       {user && (
         <section>
-          <p>hello {user.fullname}</p>
-          {/* <Link to={`/user/${user._id}`}>Hello {user.fullname}</Link> */}
+          <p>
+            hello {user.fullname}, <Link to={`/user`}>To profile</Link>{' '}
+          </p>
+
           <button onClick={onLogout}>Logout</button>
         </section>
       )}

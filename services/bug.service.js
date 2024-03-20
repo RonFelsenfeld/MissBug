@@ -78,7 +78,7 @@ function save(bug, loggedInUser) {
   } else {
     bug._id = utilService.makeId()
     bug.createdAt = Date.now()
-    bug.creator = loggedInUser
+    bug.creator = { fullname: loggedInUser.fullname, _id: loggedInUser._id }
     bugs.unshift(bug)
   }
   return _saveCarsToFile().then(() => bug)
