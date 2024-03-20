@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { utilService } from './utils.service.js'
+import { utilService } from './util.service.js'
 const PAGE_SIZE = 3
 
 export const bugService = {

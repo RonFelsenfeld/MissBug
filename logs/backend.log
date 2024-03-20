@@ -31,3 +31,5 @@
 18.3.2024, 17:49:47 - ERROR - Cannot get bug: | Bug does not exist!
 18.3.2024, 17:55:39 - ERROR - Cannot get bug: | Bug does not exist!
 18.3.2024, 17:56:12 - ERROR - Cannot get bug: | Bug does not exist!
+20.3.2024, 15:24:24 - ERROR - Could not signup | TypeError: userService.getLoginToke is not a function
+20.3.2024, 15:25:41 - ERROR - Could not signup | TypeError: userService.getLoginToke is not a function

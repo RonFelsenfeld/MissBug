@@ -5,8 +5,6 @@ import { utilService } from './util.service.js'
 const cryptr = new Cryptr('XOX-miss-bug-XOX')
 const users = utilService.readJsonFile('data/users.json')
 
-console.log(users)
-
 export const userService = {
   query,
   getById,
@@ -70,7 +68,7 @@ function _saveUsersToFile() {
   return new Promise((resolve, reject) => {
     const usersStr = JSON.stringify(users, null, 2)
 
-    fs.writeFile('data/user.json', usersStr, err => {
+    fs.writeFile('data/users.json', usersStr, err => {
       if (err) {
         return console.log(err)
       }
