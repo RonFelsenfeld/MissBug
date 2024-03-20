@@ -120,14 +120,26 @@ app.post('/api/auth/signup', (req, res) => {
       }
     })
     .catch(err => {
-      console.log('Could not signup:', err)
       loggerService.error('Could not signup', err)
+      console.log('Could not signup:', err)
     })
 })
 
 // Login
 app.post('/api/auth/login', (req, res) => {
-  res.send('login')
+  const credentials = req.body
+
+  userService
+    .checkLogin(credentials)
+    .then(user => {
+      const loginToken = userService.getLoginToken(user)
+      res.cookie('loginToken', loginToken)
+      res.send(user)
+    })
+    .catch(err => {
+      loggerService.warn('Invalid Credentials', err)
+      res.status(401).send('Invalid Credentials')
+    })
 })
 
 // Logout

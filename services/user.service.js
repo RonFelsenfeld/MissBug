@@ -34,7 +34,7 @@ function checkLogin({ username, password }) {
     user = {
       _id: user._id,
       fullname: user.fullname,
-      isAdmin: user.isAdmin,
+      // isAdmin: user.isAdmin,
     }
   }
 
