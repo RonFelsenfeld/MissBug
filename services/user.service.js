@@ -3,7 +3,7 @@ import Cryptr from 'cryptr'
 import { utilService } from './util.service.js'
 
 const cryptr = new Cryptr('XOX-miss-bug-XOX')
-const users = utilService.readJsonFile('data/users.json')
+let users = utilService.readJsonFile('data/users.json')
 
 export const userService = {
   query,
@@ -34,7 +34,7 @@ function checkLogin({ username, password }) {
     user = {
       _id: user._id,
       fullname: user.fullname,
-      // isAdmin: user.isAdmin,
+      isAdmin: user.isAdmin,
     }
   }
 

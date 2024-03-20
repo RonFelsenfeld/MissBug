@@ -1,11 +1,22 @@
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
+const BASE_URL = '/api/user/'
 
 export const userService = {
+  query,
+  remove,
   login,
   signup,
   logout,
   getLoggedinUser,
   getEmptyCredentials,
+}
+
+function query() {
+  return axios.get(BASE_URL).then(res => res.data)
+}
+
+function remove(userId) {
+  return axios.delete(BASE_URL + userId).then(res => res.data)
 }
 
 function getLoggedinUser() {

@@ -116,6 +116,32 @@ app.delete('/api/bug/:id', (req, res) => {
 
 // Authentication & Authorization API
 
+// Get users
+app.get('/api/user', (req, res) => {
+  userService
+    .query()
+    .then(users => {
+      res.send(users)
+    })
+    .catch(err => {
+      console.log('Cannot load users', err)
+      res.status(400).send('Cannot load users')
+    })
+})
+
+// Remove user
+app.delete('/api/user/:id', (req, res) => {
+  const userId = req.params.id
+
+  userService
+    .remove(userId)
+    .then(() => res.send(userId))
+    .catch(err => {
+      loggerService.error('Cannot remove user:', err)
+      res.status(400).send('Cannot remove user')
+    })
+})
+
 // Signup
 app.post('/api/auth/signup', (req, res) => {
   const credentials = req.body

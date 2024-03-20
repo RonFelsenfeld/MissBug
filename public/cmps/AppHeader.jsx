@@ -44,9 +44,14 @@ export function AppHeader() {
       {user && (
         <section>
           <p>
-            hello {user.fullname}, <Link to={`/user`}>To profile</Link>{' '}
+            hello {user.fullname}, <Link to={`/user`}>To profile</Link>
           </p>
 
+          {user.isAdmin && (
+            <p>
+              <Link to={`/users`}>View users</Link>
+            </p>
+          )}
           <button onClick={onLogout}>Logout</button>
         </section>
       )}
