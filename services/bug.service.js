@@ -35,6 +35,13 @@ function query(filterBy, sortBy) {
     })
   }
 
+  if (filterBy.creatorId) {
+    bugsToReturn = bugsToReturn.filter(
+      bug => bug.creator._id === filterBy.creatorId
+    )
+    console.log(bugsToReturn)
+  }
+
   const sortByKey = Object.keys(sortBy)[0]
   if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)
 

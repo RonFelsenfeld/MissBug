@@ -9,7 +9,7 @@ export const bugService = {
   getFilterFromParams,
 }
 
-function query(filterBy = getDefaultFilter(), sortBy) {
+function query(filterBy = getDefaultFilter(), sortBy = {}) {
   return axios
     .get(BASE_URL, { params: { filterBy, sortBy } })
     .then(res => res.data)
@@ -37,7 +37,7 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-  return { title: '', minSeverity: 0, label: '', pageIdx: 0 }
+  return { title: '', minSeverity: 0, label: '', pageIdx: 0, creatorId: '' }
 }
 
 function getFilterFromParams(searchParams = {}) {
@@ -47,5 +47,6 @@ function getFilterFromParams(searchParams = {}) {
     minSeverity: searchParams.get('minSeverity') || defaultFilter.minSeverity,
     label: searchParams.get('label') || defaultFilter.label,
     pageIdx: +searchParams.get('pageIdx') || defaultFilter.pageIdx,
+    creatorId: searchParams.get('creatorId') || defaultFilter.creatorId,
   }
 }

@@ -26,6 +26,7 @@ app.get('/api/bug', (req, res) => {
     minSeverity: +receivedFilter.minSeverity || 0,
     label: receivedFilter.label || '',
     pageIdx: +receivedFilter.pageIdx || 0,
+    creatorId: receivedFilter.creatorId || '',
   }
 
   bugService
