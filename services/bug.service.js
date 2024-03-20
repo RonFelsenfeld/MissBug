@@ -35,12 +35,12 @@ function query(filterBy, sortBy) {
     })
   }
 
+  const sortByKey = Object.keys(sortBy)[0]
+  if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)
+
   const pageIdx = +filterBy.pageIdx
   const startIdx = pageIdx * PAGE_SIZE
   bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
-
-  const sortByKey = Object.keys(sortBy)[0]
-  if (sortByKey) bugsToReturn = _sortBugs(bugsToReturn, sortBy)
 
   return Promise.resolve(bugsToReturn)
 }

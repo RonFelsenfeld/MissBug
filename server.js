@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 
@@ -103,6 +104,12 @@ app.delete('/api/bug/:id', (req, res) => {
       loggerService.error('Cannot remove bug:', err)
       res.status(400).send('Cannot remove bug')
     })
+})
+
+// Fallback route
+
+app.get('/**', (req, res) => {
+  res.sendFile(path.resolve('public/index.html'))
 })
 
 app.listen(3030, () => console.log('Server ready at port 3030'))
